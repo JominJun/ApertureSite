@@ -43,7 +43,7 @@ div#sector1 {
     opacity: 0.2;
   }
   to {
-    transform: scale(1) rotate(360deg);
+    transform: scale(1) rotate(180deg);
     opacity: 0.7;
   }
 }
@@ -85,16 +85,38 @@ img#slogo_white {
   }
   to {
     opacity: 1;
-    padding-top: 15px;
+    padding-top: 18px;
   }
 }
 
 div#slogo_explanation {
   width: 100%;
-  padding-top: 15px;
+  padding-top: 18px;
   font-family: "Noto Sans KR";
   font-weight: 500;
+  font-size: 22px;
   text-align: center;
   animation: slogo_explanation_ani 2s;
   will-change: opacity, padding-top;
+}
+
+@keyframes slogo_member_ani {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+div#slogo_member {
+  width: 100%;
+  padding-top: 10%;
+  font-family: "Noto Sans KR";
+  font-weight: 400;
+  font-size: 15px;
+  color: #aaa;
+  text-align: center;
+  animation: slogo_member_ani 2s;
+  will-change: opacity;
 }
