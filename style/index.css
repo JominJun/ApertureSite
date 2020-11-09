@@ -6,8 +6,10 @@ body {
   height: 500%;
   color: #eee;
   background-color: #010203;
-  margin: 0;
   font-family: "Roboto", "Noto Sans KR" sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 ::-webkit-scrollbar {
@@ -22,8 +24,58 @@ body {
   background-color: #444;
 }
 
+@keyframes background_zoom {
+  from {
+    background-position: 0% 250px;
+  }
+  to {
+    background-position: 0% 350px;
+  }
+}
+
+#background1 {
+  width: 100%;
+  height: 100%;
+  background-image: url("../image/background.jpg");
+  background-size: 100%;
+  background-position: 0% 350px;
+  background-repeat: no-repeat;
+  position: fixed;
+  bottom: 0;
+  animation: background_zoom 2s;
+  will-change: background-position;
+}
+
+#background_cover {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.65));
+  position: fixed;
+}
+
 img {
   user-select: none;
+}
+
+@keyframes logo_zoom {
+  from {
+    transform: scale(0.3) rotate(0deg);
+    opacity: 0.2;
+  }
+  to {
+    transform: scale(1) rotate(360deg);
+    opacity: 0.7;
+  }
+}
+
+img#logo {
+  width: 45%;
+  display: block;
+  position: absolute;
+  left: calc(50% - 22.5%);
+  opacity: 0.7;
+  animation: logo_zoom 2s;
+  will-change: transform, opacity;
 }
 
 div#sector1 {
@@ -37,26 +89,7 @@ div#sector1 {
   align-items: center;
 }
 
-@keyframes logo_zoom {
-  from {
-    transform: scale(0.3) rotate(0deg);
-    opacity: 0.2;
-  }
-  to {
-    transform: scale(1) rotate(180deg);
-    opacity: 0.7;
-  }
-}
-
-img#logo {
-  width: 45%;
-  position: absolute;
-  opacity: 0.7;
-  animation: logo_zoom 2s;
-  will-change: transform, opacity;
-}
-
-div#slogo_white_wrap {
+div#slogo_wrap {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -72,8 +105,9 @@ div#slogo_white_wrap {
   }
 }
 
-img#slogo_white {
+img#slogo {
   height: 40px;
+  cursor: pointer;
   animation: slogo_fadein 2s;
   will-change: opacity;
 }
@@ -92,9 +126,9 @@ img#slogo_white {
 div#slogo_explanation {
   width: 100%;
   padding-top: 18px;
-  font-family: "Noto Sans KR";
-  font-weight: 500;
-  font-size: 22px;
+  font-family: "Roboto";
+  font-weight: 300;
+  font-size: 20px;
   text-align: center;
   animation: slogo_explanation_ani 2s;
   will-change: opacity, padding-top;
@@ -110,13 +144,36 @@ div#slogo_explanation {
 }
 
 div#slogo_member {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
   padding-top: 10%;
   font-family: "Noto Sans KR";
   font-weight: 400;
   font-size: 15px;
-  color: #aaa;
+  color: #999;
   text-align: center;
   animation: slogo_member_ani 2s;
   will-change: opacity;
+}
+
+div#slogo_member > div {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+}
+
+div#slogo_member div.name {
+  float: left;
+  cursor: pointer;
+  padding-left: 5px;
+}
+
+div#slogo_member div.name:hover {
+  color: #ccc;
+}
+
+div#slogo_member div.name:first-child {
+  padding-left: 0px;
 }

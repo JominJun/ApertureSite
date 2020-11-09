@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta
+      name="msapplication-TileImage"
+      content="image/favicon/ms-icon-144x144.png"
+    />
+    <meta name="theme-color" content="#ffffff" />
 
     <link
       rel="apple-touch-icon"
@@ -73,37 +79,74 @@
       sizes="16x16"
       href="image/favicon/favicon-16x16.png"
     />
+
     <link rel="manifest" href="image/favicon/manifest.json" />
-    <meta name="msapplication-TileColor" content="#ffffff" />
-    <meta
-      name="msapplication-TileImage"
-      content="image/favicon/ms-icon-144x144.png"
-    />
-    <meta name="theme-color" content="#ffffff" />
     <link rel="stylesheet" type="text/css" href="style/index.css" />
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script type="text/javascript" src="script/index.js"></script>
 
     <title>APERTURE :: 애퍼처</title>
   </head>
   <body>
+    <div id="background1" class="background"></div>
+    <div id="background2" class="background"></div>
+    <div id="background_cover"></div>
+
     <div id="sector1">
       <img id="logo" src="image/aperture_logo_outline.png" />
 
-      <div id="slogo_white_wrap">
-        <img id="slogo_white" src="image/aperture_slogo_white.png" />
+      <div id="slogo_wrap">
+        <img id="slogo" src="image/aperture_slogo_white.png" />
       </div>
 
-      <div id="slogo_explanation">죽는 날을 우러러 한 점 부끄럼이 없기를.</div>
+      <div id="slogo_explanation">
+        Creates a new perspective illuminating the world
+      </div>
 
       <div id="slogo_member">
-        <span>
-          손호진 &nbsp; 정재엽 &nbsp; 유태연 &nbsp; 안유성 &nbsp; 이희태 &nbsp;
-          박건형 &nbsp; 윤진혁 &nbsp; 조민수 &nbsp;
-        </span>
-        <br />
-        <span>
-          조민준 &nbsp; 김태우 &nbsp; 천준민 &nbsp; 박찬희 &nbsp; 조양진 &nbsp;
-        </span>
+        <div id="aperture5th">
+          <div class="name">손호진</div>
+          <div class="name">정재엽</div>
+          <div class="name">유태연</div>
+          <div class="name">안유성</div>
+          <div class="name">이희태</div>
+          <div class="name">박건형</div>
+          <div class="name">윤진혁</div>
+          <div class="name">조민수</div>
+        </div>
+
+        <div id="aperture6th">
+          <div class="name">조민준</div>
+          <div class="name">김태우</div>
+          <div class="name">천준민</div>
+          <div class="name">박찬희</div>
+          <div class="name">조양진</div>
+        </div>
       </div>
     </div>
   </body>
+
+  <script>
+    var textWrapper = document.querySelector("#slogo_explanation");
+    textWrapper.innerHTML = textWrapper.textContent.replace(
+      /\S/g,
+      "<span class='letter'>$&</span>"
+    );
+
+    anime.timeline({ loop: false }).add({
+      targets: "#slogo_explanation .letter",
+      translateY: [100, 0],
+      translateZ: 0,
+      opacity: [0, 1],
+      easing: "easeOutExpo",
+      duration: 1400,
+      delay: (el, i) => 300 + 20 * i,
+    });
+  </script>
 </html>
