@@ -14,10 +14,10 @@ const mouseMoveLoop = () => {
   mouseX = (xPos - mouseX) * speed;
   mouseY = (yPos - mouseY) * speed;
 
-  logo.style.transform = `translate(${mouseX / 2}px, ${mouseY / 2}px)`;
+  logo.style.transform = `translate(${-mouseX / 2}px, ${-mouseY / 2}px)`;
 
   for (bg of backgrounds) {
-    bg.style.transform = `translate(${mouseX / 2}px, ${mouseY / 2}px)`;
+    bg.style.transform = `translate(${mouseX / 4}px, ${mouseY / 4}px)`;
   }
 
   window.requestAnimationFrame(mouseMoveLoop);
@@ -33,6 +33,10 @@ const logoFunc = () => {
   }
 };
 
+const nameRedirectFunc = () => {
+  console.log(this);
+};
+
 window.onload = () => {
   logo = document.getElementById("logo");
   backgrounds = document.getElementsByClassName("background");
@@ -42,4 +46,9 @@ window.onload = () => {
 
   $("#logo").fadeOut(0);
   document.getElementById("slogo").addEventListener("click", logoFunc, false);
+
+  $(".name").on("click", function () {
+    let name = $(this).attr("data-eng-name");
+    window.location.href = `./member.php?name=${name}`;
+  });
 };
