@@ -131,6 +131,8 @@
         </div>
       </div>
     </div>
+
+    <a class="scrollInduction"><span class="scrollInduction"></span></a>
   </body>
 
   <script>
@@ -149,5 +151,11 @@
       duration: 1400,
       delay: (el, i) => 300 + 20 * i,
     });
+
+    $(".scrollInduction").fadeOut(0);
+
+    setTimeout(function () {
+      $(".scrollInduction").fadeIn(600);
+    }, 1400);
   </script>
 </html>
