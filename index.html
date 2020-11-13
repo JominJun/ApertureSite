@@ -90,7 +90,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-    <script type="text/javascript" src="script/index.js"></script>
 
     <title>APERTURE :: 애퍼처</title>
   </head>
@@ -135,8 +134,9 @@
     <a class="scrollInduction"><span class="scrollInduction"></span></a>
   </body>
 
+  <script type="text/javascript" src="script/index.js"></script>
   <script>
-    var textWrapper = document.querySelector("#slogo_explanation");
+    let textWrapper = document.querySelector("#slogo_explanation");
     textWrapper.innerHTML = textWrapper.textContent.replace(
       /\S/g,
       "<span class='letter'>$&</span>"
@@ -157,5 +157,23 @@
     setTimeout(function () {
       $(".scrollInduction").fadeIn(600);
     }, 1400);
+
+    function scrollHandler() {
+      $("#slogo_explanation").fadeOut(400);
+      $("#slogo_member").fadeOut(400);
+      $(".scrollInduction").fadeOut(400);
+
+      $("#slogo").css("position", "fixed");
+      $("#slogo").animate(
+        {
+          top: window.innerHeight / 2,
+        },
+        800
+      );
+
+      //console.log(this.pageYOffset);
+    }
+
+    window.addEventListener("scroll", scrollHandler);
   </script>
 </html>
