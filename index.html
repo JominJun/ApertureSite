@@ -159,19 +159,17 @@
     }, 1400);
 
     function scrollHandler() {
-      $("#slogo_explanation").fadeOut(400);
-      $("#slogo_member").fadeOut(400);
-      $(".scrollInduction").fadeOut(400);
-
-      $("#slogo").css("position", "fixed");
-      $("#slogo").animate(
-        {
-          top: window.innerHeight / 2,
-        },
-        800
-      );
-
-      //console.log(this.pageYOffset);
+      if (this.pageYOffset) {
+        $("#slogo_explanation").fadeOut(400);
+        $("#slogo_member").fadeOut(400);
+        $(".scrollInduction").fadeOut(400);
+        $("#slogo").fadeOut(400);
+      } else {
+        $("#slogo_explanation").fadeIn(400);
+        $("#slogo_member").fadeIn(400);
+        $(".scrollInduction").fadeIn(400);
+        $("#slogo").fadeIn(400);
+      }
     }
 
     window.addEventListener("scroll", scrollHandler);
